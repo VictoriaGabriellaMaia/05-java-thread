@@ -1,14 +1,18 @@
-import tarefa.MinhaThread;
+import tarefa.ProcessadorRelatorio;
 
 public class Main {
+
     public static void main(String[] args) {
-        MinhaThread thread = new MinhaThread();
 
-        thread.setName("Minha Thread A");
-        
-        // Dispara o método run() em paralelo:
-        thread.start(); 
+        ProcessadorRelatorio faturamento =
+                new ProcessadorRelatorio("Faturamento");
 
-        System.out.println("Fim!");
+        ProcessadorRelatorio vendas =
+                new ProcessadorRelatorio("Vendas");
+
+        faturamento.start();
+        vendas.start();
+
+        System.out.println("Relatórios iniciados!");
     }
 }
