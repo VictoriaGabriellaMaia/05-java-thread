@@ -42,3 +42,14 @@ Inicie as duas threads em paralelo usando o método .start().
 #### Comportamento Esperado no Console:
 
 As mensagens de "Faturamento" e "Vendas" vão se intercalar na tela conforme as páginas são geradas, mostrando que os relatórios estão sendo criados ao mesmo tempo.
+
+
+# Solução
+
+A aplicação foi desenvolvida utilizando a herança direta da classe `Thread`. Foi criada a classe `ProcessadorRelatorio`, que estende `Thread` e recebe o nome do departamento em seu construtor.
+
+O nome do departamento é atribuído à Thread por meio do método `setName()`. No método `run()`, é utilizado um loop para simular o processamento de 3 páginas do relatório. A cada página, o programa exibe uma mensagem com o nome da Thread e utiliza `Thread.sleep(500)` para simular o tempo de processamento.
+
+Na classe `Main`, foram criadas duas Threads: uma para o departamento de Faturamento e outra para o departamento de Vendas. As duas são iniciadas utilizando o método `start()`, permitindo que suas execuções ocorram de forma concorrente.
+
+Como as duas Threads são executadas de forma concorrente, as mensagens dos departamentos podem aparecer intercaladas no console, mostrando o processamento simultâneo dos relatórios.
